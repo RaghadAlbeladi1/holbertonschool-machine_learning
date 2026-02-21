@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-   """
+"""
+Calculates the shape of a nested matrix.
+"""
+
+
+def matrix_shape(matrix):
+    """
     Calculates the shape of a nested matrix.
 
     Args:
@@ -8,9 +14,6 @@
     Returns:
         list: A list of integers representing the shape of the matrix.
     """
-
-
-def matrix_shape(matrix):
     shape = []
     while isinstance(matrix, list):
         shape.append(len(matrix))
