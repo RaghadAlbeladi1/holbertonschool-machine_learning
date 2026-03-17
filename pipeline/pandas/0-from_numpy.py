@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
+"""Creates a pandas DataFrame from a numpy ndarray"""
+
 import pandas as pd
 
 
 def from_numpy(array):
-    """
-    function to create a dataframe
-    Args:
-        array: np.ndarray from which you should create the pd.DataFrame
-    Returns: newly created pd.DataFrame
-    """
-    c_list = list('ABCDEFGH')
-    reshape = c_list[:array.shape[1]]
-    return pd.DataFrame(array, columns=reshape)
+    """Return a DataFrame with alphabetical column labels"""
+    cols = array.shape[1]
+    labels = [chr(65 + i) for i in range(cols)]
+    return pd.DataFrame(array, columns=labels)
