@@ -18,11 +18,19 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
     verbose: if True, prints log likelihood information
     Returns: pi, m, S, g, log_lh or None x5 on failure
     """
-    if (not isinstance(X, np.ndarray) or X.ndim != 2 or
-            not isinstance(k, int) or k <= 0 or
-            not isinstance(iterations, int) or iterations <= 0 or
-            not isinstance(tol, (int, float)) or tol < 0 or
-            not isinstance(verbose, bool)):
+    if not isinstance(X, np.ndarray) or X.ndim != 2:
+        return None, None, None, None, None
+    if not isinstance(k, int) or k <= 0:
+        return None, None, None, None, None
+    if not isinstance(iterations, int) or iterations <= 0:
+        return None, None, None, None, None
+    if not isinstance(tol, (int, float)) or tol < 0:
+        return None, None, None, None, None
+    if not isinstance(verbose, bool):
+        return None, None, None, None, None
+
+    n, d = X.shape
+    if k > n:
         return None, None, None, None, None
 
     pi, m, S = initialize(X, k)
